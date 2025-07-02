@@ -13,6 +13,10 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
+        //PLAN
+        //I will use an i integer to multiply each number 
+        // but increase each time for example i starts at 1: 3*1, then 3*2
+
         List<double> multiples = new List<double>(); //New List
 
         for (int i = 1; i <= length; i++) //For each number of i, multiply to number and add 1
@@ -38,6 +42,12 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //PLAN
+        //I will make sure the amount is in the list of data or if it needs to
+        //be ended if the amount is 0, then make a list for each rotated amount
+        //and then the leftovers and clear the original list and add them back
+        //in the new order
 
         amount = amount % data.Count; //Amount is actually in the list
 
