@@ -11,6 +11,8 @@ public static class ArraySelector
 
     private static int[] ListSelector(int[] list1, int[] list2, int[] select)
     {
+        var array1Index = 0;
+        var array2Index = 0;
         return [];
     }
 }

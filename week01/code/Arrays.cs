@@ -13,7 +13,16 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        List<double> multiples = new List<double>(); //New List
+
+        for (int i = 1; i <= length; i++) //For each number of i, multiply to number and add 1
+        {
+            double multiple = number * i;
+            multiples.Add(multiple); //after multiplying, add multiple to list
+        }
+
+
+        return multiples.ToArray(); // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +38,17 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        amount = amount % data.Count; //Amount is actually in the list
+
+        if (amount == 0) return; //for no rotation needed
+
+        List<int> rotatedRight = data.GetRange(data.Count - amount, amount); //rotated values
+        List<int> remainingNum = data.GetRange(0, data.Count - amount); //what stays
+
+        data.Clear();
+
+        data.AddRange(rotatedRight); //add rotated amount first
+        data.AddRange(remainingNum); //finally put regular 1,2,3 etc after rotated
     }
 }
