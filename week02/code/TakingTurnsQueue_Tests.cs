@@ -11,7 +11,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3) and
     // run until the queue is empty
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: Assert.Fail is failing, assert.areEqual is also failing
     public void TestTakingTurnsQueue_FiniteRepetition()
     {
         var bob = new Person("Bob", 2);
@@ -30,10 +30,12 @@ public class TakingTurnsQueueTests
         {
             if (i >= expectedResult.Length)
             {
+                //Failing and says implement test case and remove this
                 Assert.Fail("Queue should have ran out of items by now.");
             }
 
             var person = players.GetNextPerson();
+            //assert.areequal is failing wants bob but got sue
             Assert.AreEqual(expectedResult[i].Name, person.Name);
             i++;
         }
@@ -43,7 +45,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (5), Sue (3)
     // After running 5 times, add George with 3 turns.  Run until the queue is empty.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, George, Sue, Tim, George, Tim, George
-    // Defect(s) Found: 
+    // Defect(s) Found: Assert.Fail is failing, assert.areequal is failing
     public void TestTakingTurnsQueue_AddPlayerMidway()
     {
         var bob = new Person("Bob", 2);
@@ -62,6 +64,7 @@ public class TakingTurnsQueueTests
         for (; i < 5; i++)
         {
             var person = players.GetNextPerson();
+            //assert below is failing and wants bob got sue
             Assert.AreEqual(expectedResult[i].Name, person.Name);
         }
 
@@ -71,6 +74,7 @@ public class TakingTurnsQueueTests
         {
             if (i >= expectedResult.Length)
             {
+                //This fails "implement test case and remove it"
                 Assert.Fail("Queue should have ran out of items by now.");
             }
 
@@ -85,7 +89,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Bob (2), Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Bob, Tim, Sue, Bob, Tim, Sue, Tim, Sue, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: assert.AreEqual is failing
     public void TestTakingTurnsQueue_ForeverZero()
     {
         var timTurns = 0;
@@ -104,6 +108,7 @@ public class TakingTurnsQueueTests
         for (int i = 0; i < 10; i++)
         {
             var person = players.GetNextPerson();
+            //assert below failing
             Assert.AreEqual(expectedResult[i].Name, person.Name);
         }
 
@@ -116,7 +121,7 @@ public class TakingTurnsQueueTests
     // Scenario: Create a queue with the following people and turns: Tim (Forever), Sue (3)
     // Run 10 times.
     // Expected Result: Tim, Sue, Tim, Sue, Tim, Sue, Tim, Tim, Tim, Tim
-    // Defect(s) Found: 
+    // Defect(s) Found: assert.areequal is failing
     public void TestTakingTurnsQueue_ForeverNegative()
     {
         var timTurns = -3;
@@ -132,6 +137,7 @@ public class TakingTurnsQueueTests
         for (int i = 0; i < 10; i++)
         {
             var person = players.GetNextPerson();
+            //assert here failing
             Assert.AreEqual(expectedResult[i].Name, person.Name);
         }
 
