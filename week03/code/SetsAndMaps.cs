@@ -64,7 +64,20 @@ public static class SetsAndMaps
         foreach (var line in File.ReadLines(filename))
         {
             var fields = line.Split(",");
-            // TODO Problem 2 - ADD YOUR CODE HERE
+
+            if (fields.Length > 3)
+            {
+                string degree = fields[3].Trim();
+
+                if (degrees.ContainsKey(degree))
+                {
+                    degrees[degree]++;
+                }
+                else
+                {
+                    degrees.Add(degree, 1);
+                }
+            }
         }
 
         return degrees;
@@ -88,8 +101,43 @@ public static class SetsAndMaps
     /// </summary>
     public static bool IsAnagram(string word1, string word2)
     {
-        // TODO Problem 3 - ADD YOUR CODE HERE
-        return false;
+        string w1 = word1.Replace(" ", "").ToLowerInvariant();
+        string w2 = word2.Replace(" ", "").ToLowerInvariant();
+
+        if (w1.Length != w2.Length)
+        {
+            return false;
+        }
+
+        var charCounts = new Dictionary<char, int>();
+        foreach (char c in w1)
+        {
+            if (charCounts.ContainsKey(c))
+            {
+                charCounts[c]++;
+            }
+            else
+            {
+                charCounts[c] = 1;
+            }
+        }
+
+        foreach (char c in w2)
+        {
+            if (!charCounts.ContainsKey(c))
+            {
+                return false;
+            }
+
+            charCounts[c]--;
+
+            if (charCounts[c] < 0)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     /// <summary>
